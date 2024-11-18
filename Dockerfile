@@ -16,3 +16,8 @@ COPY launch.json .vscode
 RUN dotnet cake --verbosity=diagnostic --BuildTarget=InstallWorkload 
 RUN apt update
 RUN apt install -y libgtk-3-dev libgtksourceview-4-0 
+RUN dotnet new install GtkSharp.Template.CSharp
+WORKDIR /mauienv
+RUN dotnet new gtkapp -n GtkAppGeneratedFromTemplate
+WORKDIR /mauienv/GtkAppGeneratedFromTemplate
+
