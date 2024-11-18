@@ -14,4 +14,5 @@ RUN dotnet tool restore
 COPY launch.json .vscode
   # ^ this allows debugging using the vscode devcontainer extension 
 RUN dotnet cake --verbosity=diagnostic --BuildTarget=InstallWorkload 
-apt install -y libgtk-3-dev libgtksourceview-4-0 
+RUN apt update
+RUN apt install -y libgtk-3-dev libgtksourceview-4-0 
