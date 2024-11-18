@@ -1,0 +1,38 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Samples",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "BuildOutput/Samples/Samples.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+        {   // install VSCode Cake extension for source-level debugging of the cake script
+            "name": "Cake Build Script (InstallWorkload)",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${env:HOME}/.nuget/packages/cake.tool/2.0.0/tools/net6.0/any/Cake.dll",
+            "args": [
+                "${workspaceRoot}/build.cake",
+                "--BuildTarget=InstallWorkload",
+                "--debug",
+                "--verbosity=diagnostic"
+            ],
+            "cwd": "${workspaceRoot}",
+            "stopAtEntry": false,
+            "externalConsole": false
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickProcess}"
+        }
+    ]
+}
